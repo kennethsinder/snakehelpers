@@ -4,7 +4,7 @@ snakehelpers: General-purpose Python 3 helper functions by Kenneth Sinder
 (https://github.com/kennethsinder/snakehelpers)
 """
 
-from typing import Any, Callable, Iterable, Optional, Union
+from typing import Any, Callable, Dict, Iterable, Optional, Union
 
 
 def any_in(A: Iterable[Any], B: Iterable[Any]) -> bool:
@@ -28,3 +28,11 @@ def first(L: Iterable[Any],
         if not required:
             return default
         raise
+
+def filter_dict(mapping: Dict[Any, Any],
+                keys: Iterable[Any]) -> Dict[Any, Any]:
+    result = {}
+    for key in keys:
+        if key in mapping:
+            result[key] = mapping[key]
+    return result
